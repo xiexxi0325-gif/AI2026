@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 리터러시의 이해 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@100;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        /* Mascot Animation */
+        .mascot-float {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Blobs -->
+    <div class="blob top-[-10%] left-[-10%]"></div>
+    <div class="blob bottom-[10%] right-[-10%] animate-pulse"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-full px-8 py-3">
+            <h1 class="text-xl font-black tracking-tighter gradient-text">AI LITERACY 2026</h1>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition-colors">과목소개</a>
+                <a href="#portfolio" class="hover:text-blue-400 transition-colors">포트폴리오</a>
+                <a href="#author" class="hover:text-blue-400 transition-colors">작성자</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative">
+            <div class="absolute -top-10 right-10 w-24 md:w-32 mascot-float opacity-80 hidden lg:block">
+                <img src="산지니.webp" alt="마스코트 산지니" class="w-full h-auto drop-shadow-2xl">
+            </div>
+
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase glass rounded-full">
+                Course Portfolio
+            </span>
+            <h2 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                데이터로 세상을 해석하고<br/>
+                <span class="gradient-text">AI로 이야기를 만들다</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed mb-12" id="about">
+                "생성형 AI와 데이터 분석 도구를 활용하여 현실 세계의 문제를 이해하고, 데이터를 해석하며, 그 결과를 의미 있는 이야기와 콘텐츠로 표현하는 여정을 담았습니다."
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#portfolio" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition-all transform hover:scale-105">
+                    과제 확인하기
+                </a>
+                <a href="#author" class="px-8 py-4 glass hover:bg-white/10 rounded-xl font-bold transition-all">
+                    작성자 소개
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section id="portfolio" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h3 class="text-3xl font-bold mb-2">과제 타임라인</h3>
+                    <p class="text-gray-400">학기 동안 수행한 10가지 프로젝트</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="assignment-grid">
+                <!-- Cards injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section (수정된 부분) -->
+    <section id="author" class="py-24 px-6 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-bl-full"></div>
+                
+                <div class="relative">
+                    <!-- 사진 컨테이너: 최유안1-21.jpg가 명확하게 보이도록 설정 -->
+                    <div class="w-56 h-72 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl transition-transform hover:scale-105 duration-500">
+                        <img src="최유안1-21.jpg" alt="최유안 프로필 사진" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center border-4 border-slate-900 shadow-xl z-10">
+                        <i class="fas fa-id-badge text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-2 block">Developer & Student</span>
+                    <h3 class="text-4xl font-black mb-4">최유안 <span class="text-xl font-normal text-gray-400 ml-2">Choi Yu-an</span></h3>
+                    <div class="space-y-3 mb-8 text-gray-300">
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-university text-blue-400 w-5"></i>
+                            사회복지학과 26학번
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-id-card text-blue-400 w-5"></i>
+                            학번: 202605211
+                        </p>
+                        <p class="mt-4 text-gray-400 leading-relaxed italic">
+                            "사회복지의 따뜻한 마음과 AI의 차가운 이성을 결합하여 세상을 더 나은 곳으로 만들고 싶습니다."
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-blue-300">#사회복지</span>
+                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-purple-300">#AI리터러시</span>
+                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-pink-300">#데이터분석</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-20 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="mb-8 flex justify-center">
+                 <img src="산지니.webp" alt="산지니" class="w-16 h-16 opacity-50 hover:opacity-100 transition-opacity">
+            </div>
+            <h4 class="text-2xl font-bold mb-4">함께 성장하는 AI 리터러시</h4>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="#" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="mt-12 text-sm text-gray-600">© 2026 최유안 (202605211). Social Welfare Dept. Portfolio.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative glass max-w-2xl w-full rounded-3xl p-8 overflow-hidden">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const assignments = [
+            { id: 1, title: "AI의 첫걸음: 프롬프트 엔지니어링", category: "AI 활용", description: "생성형 AI에게 정확한 명령을 내리는 법을 익히고 실습했습니다.", icon: "fa-terminal", color: "from-blue-500 to-cyan-400" },
+            { id: 2, title: "데이터의 바다에서 의미 찾기", category: "데이터 분석", description: "공공 데이터를 활용하여 현실 세계의 문제를 정의하는 법을 배웠습니다.", icon: "fa-database", color: "from-purple-500 to-pink-500" },
+            { id: 3, title: "비주얼 스토리텔링: 데이터 시각화", category: "데이터 시각화", description: "복잡한 수치를 시각적으로 표현하는 기술을 익혔습니다.", icon: "fa-chart-pie", color: "from-orange-500 to-yellow-500" },
+            { id: 4, title: "AI와 함께하는 텍스트 마이닝", category: "AI 분석", description: "문서 속 핵심 키워드와 감성을 분석하는 실습을 진행했습니다.", icon: "fa-file-alt", color: "from-green-500 to-emerald-500" },
+            { id: 5, title: "윤리적 AI 사용 가이드라인", category: "AI 윤리", description: "AI 활용 시 고려해야 할 윤리적 기준을 세웠습니다.", icon: "fa-balance-scale", color: "from-red-500 to-rose-500" },
+            { id: 6, title: "이미지 생성 AI와 창의성", category: "AI 콘텐츠", description: "상상을 이미지로 구현하는 창작의 가능성을 탐구했습니다.", icon: "fa-paint-brush", color: "from-indigo-500 to-blue-500" },
+            { id: 7, title: "문제 해결을 위한 알고리즘 사고", category: "논리적 사고", description: "문제를 단계별로 분해하고 해결하는 논리적 설계를 진행했습니다.", icon: "fa-project-diagram", color: "from-teal-500 to-cyan-500" },
+            { id: 8, title: "맞춤형 AI 챗봇 빌딩", category: "AI 개발", description: "나만의 지식을 학습시킨 GPTs 어시스턴트를 제작했습니다.", icon: "fa-robot", color: "from-violet-500 to-fuchsia-500" },
+            { id: 9, title: "데이터 기반의 미래 예측", category: "데이터 사이언스", description: "패턴 분석을 통한 의사결정 내리는 법을 학습했습니다.", icon: "fa-magic", color: "from-amber-500 to-orange-500" },
+            { id: 10, title: "최종 프로젝트: AI 리터러시 리포트", category: "통합", description: "모든 지식을 총동원한 사회 문제 해결 솔루션을 완성했습니다.", icon: "fa-award", color: "from-blue-600 to-indigo-700" }
+        ];
+
+        function renderCards() {
+            const grid = document.getElementById('assignment-grid');
+            if (!grid) return;
+            grid.innerHTML = assignments.map((task) => `
+                <div class="group relative p-8 rounded-3xl glass card-hover cursor-pointer transition-all duration-500" 
+                     onclick="openModal(${task.id})">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br ${task.color} flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fas ${task.icon} text-2xl text-white"></i>
+                    </div>
+                    <span class="text-xs font-bold text-blue-400 tracking-widest uppercase mb-2 block">${task.category}</span>
+                    <h4 class="text-xl font-bold mb-4 group-hover:text-blue-400 transition-colors">과제 ${task.id}. ${task.title}</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed line-clamp-2">${task.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function openModal(id) {
+            const task = assignments.find(t => t.id === id);
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            if (!task || !modal || !content) return;
+            
+            content.innerHTML = `
+                <div class="mb-6">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br ${task.color} flex items-center justify-center mb-6 shadow-xl">
+                        <i class="fas ${task.icon} text-4xl text-white"></i>
+                    </div>
+                    <h2 class="text-3xl font-black mb-4">${task.title}</h2>
+                    <p class="text-lg text-gray-300">${task.description}</p>
+                </div>
+                <button onclick="closeModal()" class="w-full py-4 glass rounded-xl font-bold hover:bg-white/10">닫기</button>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            if (modal) modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onload = renderCards;
+    </script>
+</body>
+</html>
