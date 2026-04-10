@@ -83,13 +83,16 @@
         
         <!-- Action Buttons -->
         <div class="flex items-center gap-3">
+            <!-- 1. 홈 버튼 -->
             <a href="../index.html" class="nav-btn text-white">
                 <i class="fa-solid fa-house"></i> <span class="hidden sm:inline">홈</span>
             </a>
+            <!-- 2. 동영상 버튼 -->
             <button onclick="openVideo()" class="nav-btn text-orange-400 border-orange-400/30 hover:bg-orange-400/10">
                 <i class="fa-solid fa-play"></i> <span class="hidden sm:inline">동영상</span>
             </button>
-            <a href="uploaded:AI2.pdf.pdf" download="AI_Strategy_Report.pdf" class="nav-btn text-emerald-400 border-emerald-400/30 hover:bg-emerald-400/10">
+            <!-- 3. 슬라이드 버튼 (수정됨) -->
+            <a href="AI_slides.pdf" download="AI_slides.pdf" class="nav-btn text-emerald-400 border-emerald-400/30 hover:bg-emerald-400/10">
                 <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">슬라이드</span>
             </a>
         </div>
@@ -102,7 +105,6 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-                <!-- Sample AI Introduction Video -->
                 <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
@@ -122,9 +124,6 @@
         <div class="mt-12">
             <a href="#evolution" class="bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-4 rounded-full font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.4)]">탐험 시작하기</a>
         </div>
-        <div class="absolute bottom-10 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-2xl opacity-30"></i>
-        </div>
     </section>
 
     <!-- Evolution Section -->
@@ -133,123 +132,58 @@
             <h2 class="text-4xl md:text-6xl font-bold mb-4 poppins">AI Evolution Path</h2>
             <p class="text-emerald-400 text-lg uppercase tracking-widest">LLM에서 자율 에이전트까지</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="reveal">
                 <div class="glass p-8 rounded-3xl border-l-4 border-emerald-400">
-                    <h3 class="text-3xl font-bold mb-6">AI 에이전트의 5대 핵심 능력</h3>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <span class="bg-emerald-400/20 p-3 rounded-lg text-emerald-400"><i class="fa-solid fa-eye"></i></span>
-                            <div>
-                                <h4 class="font-bold text-xl">인지 (Perception)</h4>
-                                <p class="opacity-70">실시간 환경 데이터를 다각도로 수집하고 해석합니다.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="bg-emerald-400/20 p-3 rounded-lg text-emerald-400"><i class="fa-solid fa-diagram-project"></i></span>
-                            <div>
-                                <h4 class="font-bold text-xl">추론 (Reasoning)</h4>
-                                <p class="opacity-70">복잡한 목표를 해결하기 위해 단계를 나누어 계획을 세웁니다.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="bg-emerald-400/20 p-3 rounded-lg text-emerald-400"><i class="fa-solid fa-bolt"></i></span>
-                            <div>
-                                <h4 class="font-bold text-xl">실행 (Action)</h4>
-                                <p class="opacity-70">API 호출, 툴 사용 등을 통해 직접 결과를 도출합니다.</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <h3 class="text-3xl font-bold mb-6 text-emerald-400 underline decoration-emerald-400/30">AI 에이전트 핵심 역량</h3>
+                    <p class="opacity-70 mb-6 leading-relaxed">AI 에이전트는 사용자의 개입 없이도 스스로 목표를 설정하고 도구를 사용하며 문제를 해결하는 능력을 갖추고 있습니다.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>자율적 계획 수립 (Planning)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>외부 툴 및 API 연동 (Execution)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>멀티모달 데이터 인지 (Perception)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="reveal grid grid-cols-2 gap-4">
-                <div class="glass p-6 rounded-2xl text-center transform hover:-translate-y-2 transition shadow-lg">
-                    <div class="text-4xl text-orange-400 mb-2 font-bold poppins">74%</div>
-                    <p class="text-sm opacity-60 uppercase">업무 생산성 향상</p>
-                </div>
-                <div class="glass p-6 rounded-2xl text-center transform hover:-translate-y-2 transition mt-8 shadow-lg">
-                    <div class="text-4xl text-emerald-400 mb-2 font-bold poppins">44.8%</div>
-                    <p class="text-sm opacity-60 uppercase">시장 연평균 성장률</p>
-                </div>
-                <div class="glass p-6 rounded-2xl text-center transform hover:-translate-y-2 transition shadow-lg">
-                    <div class="text-4xl text-blue-400 mb-2 font-bold poppins">24/7</div>
-                    <p class="text-sm opacity-60 uppercase">자율적 업무 수행</p>
-                </div>
-                <div class="glass p-6 rounded-2xl text-center transform hover:-translate-y-2 transition mt-8 shadow-lg">
-                    <div class="text-4xl text-purple-400 mb-2 font-bold poppins">Inf</div>
-                    <p class="text-sm opacity-60 uppercase">무한한 확장 가능성</p>
+            <div class="reveal">
+                <div class="p-4 glass rounded-3xl shadow-2xl">
+                    <div class="bg-emerald-900/20 p-8 rounded-2xl border border-emerald-400/20">
+                        <h4 class="text-xl font-bold mb-4">비즈니스 파급력</h4>
+                        <p class="text-3xl font-extrabold text-emerald-400 mb-2">74%</p>
+                        <p class="opacity-60 text-sm">에이전트 도입 시 생산성 향상 기대치 (2025 전망)</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mechanism Section -->
+    <!-- Mechanism Section (Transformer) -->
     <section id="mechanism" class="py-24 bg-[#02223a]/50 px-8">
         <div class="max-w-7xl mx-auto">
             <div class="reveal text-center mb-20">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 poppins">Inside the Transformer</h2>
-                <p class="text-orange-400 text-lg uppercase tracking-widest">창조의 근원, Self-Attention 아키텍처</p>
+                <p class="text-orange-400 text-lg uppercase tracking-widest">QKV 메커니즘: AI가 맥락을 이해하는 방법</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-orange-400 transition-all hover:bg-orange-400/5">
-                    <div class="text-5xl mb-6 text-orange-400"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase poppins">Query (질의)</h3>
-                    <p class="opacity-80 mb-4">"나는 지금 어떤 정보를 찾고 있는가?"</p>
-                    <div class="qkv-detail text-sm leading-relaxed text-orange-200">
-                        모델이 현재 단어의 의미를 파악하기 위해 다른 단어들에게 던지는 질문입니다. 문맥의 핵심 질문을 형성합니다.
-                    </div>
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-orange-400 hover:bg-orange-400/5 transition-all">
+                    <h3 class="text-2xl font-bold mb-4 poppins">QUERY</h3>
+                    <p class="opacity-80">현재 찾고자 하는 정보의 핵심 질문</p>
+                    <div class="qkv-detail mt-4 text-sm text-orange-200">단어와 단어 사이의 관계를 파악하기 위해 다른 모든 단어들에게 질문을 던지는 주체입니다.</div>
                 </div>
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-emerald-400 transition-all hover:bg-emerald-400/5">
-                    <div class="text-5xl mb-6 text-emerald-400"><i class="fa-solid fa-key"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase poppins">Key (색인)</h3>
-                    <p class="opacity-80 mb-4">"내 정보는 질문과 얼마나 관련 있는가?"</p>
-                    <div class="qkv-detail text-sm leading-relaxed text-emerald-200">
-                        데이터베이스의 인덱스와 같은 역할을 합니다. Query와의 유사도를 측정하여 가중치를 결정합니다.
-                    </div>
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-emerald-400 hover:bg-emerald-400/5 transition-all">
+                    <h3 class="text-2xl font-bold mb-4 poppins">KEY</h3>
+                    <p class="opacity-80">질문에 대한 응답을 위한 인덱스</p>
+                    <div class="qkv-detail mt-4 text-sm text-emerald-200">Query가 왔을 때 얼마나 관련이 있는지를 알려주는 이름표 역할을 합니다.</div>
                 </div>
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-blue-400 transition-all hover:bg-blue-400/5">
-                    <div class="text-5xl mb-6 text-blue-400"><i class="fa-solid fa-database"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase poppins">Value (값)</h3>
-                    <p class="opacity-80 mb-4">"내가 가진 실제 의미 정보는 무엇인가?"</p>
-                    <div class="qkv-detail text-sm leading-relaxed text-blue-200">
-                        Query와 Key의 유사도가 높을수록 이 Value 값이 최종 결과물 생성에 더 많이 반영됩니다.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Strategy Section -->
-    <section id="strategy" class="py-24 px-8 max-w-7xl mx-auto">
-        <div class="reveal text-center mb-20">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 poppins">Sovereign AI Strategy</h2>
-            <p class="text-purple-400 text-lg uppercase tracking-widest">디지털 주권, 국가적 생존의 열쇠</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h3 class="text-4xl font-bold mb-8">왜 <span class="text-purple-400">주권</span>인가?</h3>
-                <p class="text-xl opacity-70 leading-relaxed mb-8">
-                    글로벌 빅테크의 AI 종속은 국가의 데이터 주권뿐만 아니라 문화적 독자성까지 위협합니다. 소버린 AI는 단순한 기술 확보가 아닌 <strong>국가적 자율성</strong>의 토대입니다.
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-4 glass rounded-xl border-r-4 border-purple-400">
-                        <i class="fa-solid fa-shield-halved text-purple-400 text-2xl"></i>
-                        <span class="font-medium">데이터 안보 및 기밀 보호</span>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 glass rounded-xl border-r-4 border-purple-400">
-                        <i class="fa-solid fa-language text-purple-400 text-2xl"></i>
-                        <span class="font-medium">자국 언어 및 문화적 맥락 유지</span>
-                    </div>
-                </div>
-            </div>
-            <div class="reveal flex justify-center">
-                <div class="w-full h-80 glass rounded-3xl flex items-center justify-center border-dashed border-2 border-purple-400/30">
-                    <div class="w-48 h-48 bg-purple-500/20 rounded-full animate-pulse flex items-center justify-center">
-                        <i class="fa-solid fa-earth-asia text-7xl text-purple-400"></i>
-                    </div>
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-blue-400 hover:bg-blue-400/5 transition-all">
+                    <h3 class="text-2xl font-bold mb-4 poppins">VALUE</h3>
+                    <p class="opacity-80">최종적으로 전달할 실제 정보값</p>
+                    <div class="qkv-detail mt-4 text-sm text-blue-200">Query와 Key의 일치도를 바탕으로 최종적으로 추출되어 계산되는 데이터의 내용입니다.</div>
                 </div>
             </div>
         </div>
@@ -257,7 +191,7 @@
 
     <!-- Footer -->
     <footer class="py-12 border-t border-white/10 px-8 text-center opacity-50 text-sm">
-        <p class="poppins mb-2 uppercase tracking-widest">NIA Strategic Analysis | Digital Sovereign 2024</p>
+        <p class="poppins mb-2 uppercase tracking-widest">NIA Strategic Insight | AI Intelligence 2024</p>
         <p>&copy; 2024 AI_EXPLORER. All Rights Reserved.</p>
     </footer>
 
@@ -268,21 +202,18 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
-
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // Video Modal Logic
+        // Video Modal
         function openVideo() {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('videoIframe');
-            // Sample AI Agent explanation video from YouTube
             iframe.src = "https://www.youtube.com/embed/6i_W6v9_H00?autoplay=1"; 
             modal.style.display = 'flex';
         }
@@ -290,21 +221,9 @@
         function closeVideo() {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('videoIframe');
-            iframe.src = ""; // Stop video playback
+            iframe.src = "";
             modal.style.display = 'none';
         }
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if(this.getAttribute('href') !== "#") {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
