@@ -51,8 +51,8 @@
             transition: all 0.5s ease;
         }
 
-        /* Video Modal Styles */
-        #videoModal {
+        /* Modal Styles (Video & Image) */
+        .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
@@ -60,6 +60,7 @@
             background: rgba(0, 0, 0, 0.9);
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         /* Floating Animation */
@@ -82,16 +83,20 @@
         <div class="text-xl md:text-2xl font-bold poppins text-emerald-400">AI_EXPLORER</div>
         
         <!-- Action Buttons -->
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-2 md:gap-3">
             <!-- 1. 홈 버튼 -->
             <a href="../index.html" class="nav-btn text-white">
                 <i class="fa-solid fa-house"></i> <span class="hidden sm:inline">홈</span>
             </a>
             <!-- 2. 동영상 버튼 -->
-            <button onclick="openVideo()" class="nav-btn text-orange-400 border-orange-400/30 hover:bg-orange-400/10">
+            <button onclick="openVideo()" class="nav-btn text-orange-400 border-orange-400/30">
                 <i class="fa-solid fa-play"></i> <span class="hidden sm:inline">동영상</span>
             </button>
-            <!-- 3. 슬라이드 버튼 (수정됨) -->
+            <!-- 3. 인포그래픽 버튼 (신규 추가) -->
+            <button onclick="openImage()" class="nav-btn text-blue-400 border-blue-400/30 hover:bg-blue-400/10">
+                <i class="fa-solid fa-image"></i> <span class="hidden sm:inline">인포그래픽</span>
+            </button>
+            <!-- 4. 슬라이드 버튼 -->
             <a href="AI_slides.pdf" download="AI_slides.pdf" class="nav-btn text-emerald-400 border-emerald-400/30 hover:bg-emerald-400/10">
                 <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">슬라이드</span>
             </a>
@@ -99,14 +104,27 @@
     </nav>
 
     <!-- Video Modal -->
-    <div id="videoModal" onclick="closeVideo()">
-        <div class="relative w-full max-w-4xl p-4" onclick="event.stopPropagation()">
-            <button onclick="closeVideo()" class="absolute -top-12 right-0 text-white text-3xl hover:text-emerald-400 transition">
+    <div id="videoModal" class="modal-overlay" onclick="closeVideo()">
+        <div class="relative w-full max-w-4xl" onclick="event.stopPropagation()">
+            <button onclick="closeVideo()" class="absolute -top-12 right-0 text-white text-3xl hover:text-emerald-400">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black">
                 <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+        </div>
+    </div>
+
+    <!-- Image Info Modal (신규 추가) -->
+    <div id="imageModal" class="modal-overlay" onclick="closeImage()">
+        <div class="relative max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeImage()" class="absolute -top-12 right-0 text-white text-3xl hover:text-blue-400">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="glass p-2 rounded-2xl shadow-2xl border border-white/20 overflow-auto max-h-[85vh]">
+                <img id="infoImage" src="AI_info.png" alt="AI 인포그래픽" class="rounded-xl w-full h-auto" onerror="this.parentElement.innerHTML='<div class=\'p-20 text-center\'>인포그래픽 이미지(AI_info.png)를 불러올 수 없습니다.</div>'">
+            </div>
+            <p class="mt-4 text-blue-400 font-bold poppins tracking-widest uppercase">AI Strategic Infographic</p>
         </div>
     </div>
 
@@ -135,55 +153,52 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="reveal">
                 <div class="glass p-8 rounded-3xl border-l-4 border-emerald-400">
-                    <h3 class="text-3xl font-bold mb-6 text-emerald-400 underline decoration-emerald-400/30">AI 에이전트 핵심 역량</h3>
-                    <p class="opacity-70 mb-6 leading-relaxed">AI 에이전트는 사용자의 개입 없이도 스스로 목표를 설정하고 도구를 사용하며 문제를 해결하는 능력을 갖추고 있습니다.</p>
+                    <h3 class="text-3xl font-bold mb-6 text-emerald-400">AI 에이전트 핵심 역량</h3>
+                    <p class="opacity-70 mb-6 leading-relaxed">AI 에이전트는 사용자의 개입 없이도 스스로 목표를 설정하고 도구를 사용하며 문제를 해결합니다.</p>
                     <div class="space-y-4">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>자율적 계획 수립 (Planning)</span>
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>자율적 계획 수립 (Autonomous Planning)</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>외부 툴 및 API 연동 (Execution)</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>멀티모달 데이터 인지 (Perception)</span>
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>실시간 환경 적응 (Real-time Adaptation)</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="reveal">
-                <div class="p-4 glass rounded-3xl shadow-2xl">
-                    <div class="bg-emerald-900/20 p-8 rounded-2xl border border-emerald-400/20">
-                        <h4 class="text-xl font-bold mb-4">비즈니스 파급력</h4>
-                        <p class="text-3xl font-extrabold text-emerald-400 mb-2">74%</p>
-                        <p class="opacity-60 text-sm">에이전트 도입 시 생산성 향상 기대치 (2025 전망)</p>
+                <div class="p-4 glass rounded-3xl">
+                    <div class="bg-emerald-900/20 p-8 rounded-2xl border border-emerald-400/20 text-center">
+                        <h4 class="text-xl font-bold mb-4">예상 업무 자동화율</h4>
+                        <p class="text-6xl font-extrabold text-emerald-400 mb-2 poppins">74%</p>
+                        <p class="opacity-50 text-xs">Source: Strategic Analysis 2025</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mechanism Section (Transformer) -->
+    <!-- Mechanism Section -->
     <section id="mechanism" class="py-24 bg-[#02223a]/50 px-8">
         <div class="max-w-7xl mx-auto">
             <div class="reveal text-center mb-20">
                 <h2 class="text-4xl md:text-6xl font-bold mb-4 poppins">Inside the Transformer</h2>
-                <p class="text-orange-400 text-lg uppercase tracking-widest">QKV 메커니즘: AI가 맥락을 이해하는 방법</p>
+                <p class="text-orange-400 text-lg uppercase tracking-widest">QKV 메커니즘을 통한 맥락 이해</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-orange-400 hover:bg-orange-400/5 transition-all">
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-orange-400">
                     <h3 class="text-2xl font-bold mb-4 poppins">QUERY</h3>
-                    <p class="opacity-80">현재 찾고자 하는 정보의 핵심 질문</p>
-                    <div class="qkv-detail mt-4 text-sm text-orange-200">단어와 단어 사이의 관계를 파악하기 위해 다른 모든 단어들에게 질문을 던지는 주체입니다.</div>
+                    <p class="opacity-80">무엇을 찾고 있는가?</p>
+                    <div class="qkv-detail mt-4 text-sm text-orange-200">현재 단어가 문맥 내 다른 단어들에게 던지는 질문입니다.</div>
                 </div>
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-emerald-400 hover:bg-emerald-400/5 transition-all">
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-emerald-400">
                     <h3 class="text-2xl font-bold mb-4 poppins">KEY</h3>
-                    <p class="opacity-80">질문에 대한 응답을 위한 인덱스</p>
-                    <div class="qkv-detail mt-4 text-sm text-emerald-200">Query가 왔을 때 얼마나 관련이 있는지를 알려주는 이름표 역할을 합니다.</div>
+                    <p class="opacity-80">질문에 대한 관련성 지표</p>
+                    <div class="qkv-detail mt-4 text-sm text-emerald-200">Query와 얼마나 연관이 있는지 알려주는 이름표입니다.</div>
                 </div>
-                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-blue-400 hover:bg-blue-400/5 transition-all">
+                <div class="reveal glass p-10 rounded-3xl qkv-card cursor-pointer border-t-4 border-blue-400">
                     <h3 class="text-2xl font-bold mb-4 poppins">VALUE</h3>
-                    <p class="opacity-80">최종적으로 전달할 실제 정보값</p>
-                    <div class="qkv-detail mt-4 text-sm text-blue-200">Query와 Key의 일치도를 바탕으로 최종적으로 추출되어 계산되는 데이터의 내용입니다.</div>
+                    <p class="opacity-80">전달할 실제 정보의 값</p>
+                    <div class="qkv-detail mt-4 text-sm text-blue-200">연관성에 따라 최종적으로 계산되는 데이터 내용입니다.</div>
                 </div>
             </div>
         </div>
@@ -196,7 +211,7 @@
     </footer>
 
     <script>
-        // Scroll Reveal Animation
+        // Scroll Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -210,19 +225,28 @@
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // Video Modal
+        // Video Modal Logic
         function openVideo() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            iframe.src = "https://www.youtube.com/embed/6i_W6v9_H00?autoplay=1"; 
-            modal.style.display = 'flex';
+            document.getElementById('videoModal').style.display = 'flex';
+            document.getElementById('videoIframe').src = "https://www.youtube.com/embed/6i_W6v9_H00?autoplay=1"; 
+            document.body.style.overflow = 'hidden';
         }
 
         function closeVideo() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoIframe');
-            iframe.src = "";
-            modal.style.display = 'none';
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('videoIframe').src = "";
+            document.body.style.overflow = 'auto';
+        }
+
+        // Image Modal Logic (신규)
+        function openImage() {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImage() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
