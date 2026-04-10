@@ -58,16 +58,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
-        
-        /* Mascot Animation */
-        .mascot-float {
-            animation: floating 3s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -91,10 +81,7 @@
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto text-center relative">
-            <div class="absolute -top-10 right-10 w-24 md:w-32 mascot-float opacity-80 hidden lg:block">
-                <img src="산지니.webp" alt="마스코트 산지니" class="w-full h-auto drop-shadow-2xl">
-            </div>
-
+            <!-- 산지니 이미지 제거됨 -->
             <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase glass rounded-full">
                 Course Portfolio
             </span>
@@ -109,9 +96,9 @@
                 <a href="#portfolio" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition-all transform hover:scale-105">
                     과제 확인하기
                 </a>
-                <a href="#author" class="px-8 py-4 glass hover:bg-white/10 rounded-xl font-bold transition-all">
-                    작성자 소개
-                </a>
+                <button onclick="openProfileModal()" class="px-8 py-4 glass hover:bg-white/10 rounded-xl font-bold transition-all">
+                    작성자 프로필
+                </button>
             </div>
         </div>
     </section>
@@ -131,54 +118,24 @@
         </div>
     </section>
 
-    <!-- Author Section -->
-    <section id="author" class="py-24 px-6 relative">
-        <div class="max-w-4xl mx-auto">
-            <div class="glass rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-bl-full"></div>
-                
-                <div class="relative">
-                    <div class="w-56 h-72 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl transition-transform hover:scale-105 duration-500">
-                        <img src="최유안1-21.jpg" alt="최유안 프로필 사진" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-4 -right-4 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center border-4 border-slate-900 shadow-xl z-10">
-                        <i class="fas fa-id-badge text-xl"></i>
-                    </div>
-                </div>
-
-                <div class="flex-1 text-center md:text-left">
-                    <span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-2 block">Developer & Student</span>
-                    <h3 class="text-4xl font-black mb-4">최유안 <span class="text-xl font-normal text-gray-400 ml-2">Choi Yu-an</span></h3>
-                    <div class="space-y-3 mb-8 text-gray-300">
-                        <p class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-university text-blue-400 w-5"></i>
-                            사회복지학과 26학번
-                        </p>
-                        <p class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-id-card text-blue-400 w-5"></i>
-                            학번: 202605211
-                        </p>
-                        <p class="mt-4 text-gray-400 leading-relaxed italic">
-                            "사회복지의 따뜻한 마음과 AI의 차가운 이성을 결합하여 세상을 더 나은 곳으로 만들고 싶습니다."
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-blue-300">#사회복지</span>
-                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-purple-300">#AI리터러시</span>
-                        <span class="px-4 py-2 rounded-full glass text-xs font-bold text-pink-300">#데이터분석</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Author Section (버튼형으로 변경) -->
+    <section id="author" class="py-24 px-6 relative bg-slate-900/50 border-y border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-6">포트폴리오 작성자</h3>
+            <p class="text-gray-400 mb-10">사회복지학과 최유안의 AI 리터러시 여정이 궁금하신가요?</p>
+            <button onclick="openProfileModal()" class="group relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl font-black text-xl shadow-2xl hover:scale-105 transition-all active:scale-95">
+                <span class="flex items-center gap-3">
+                    <i class="fas fa-user-circle"></i>
+                    작성자 프로필 확인
+                </span>
+            </button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="py-20 px-6 border-t border-white/10">
+    <footer id="contact" class="py-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-8 flex justify-center">
-                 <img src="산지니.webp" alt="산지니" class="w-16 h-16 opacity-50 hover:opacity-100 transition-opacity">
-            </div>
-            <h4 class="text-2xl font-bold mb-4">함께 성장하는 AI 리터러시</h4>
+            <h4 class="text-2xl font-bold mb-8">함께 성장하는 AI 리터러시</h4>
             <div class="flex justify-center space-x-6">
                 <a href="#" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
                     <i class="fab fa-github"></i>
@@ -194,11 +151,11 @@
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Global Modal Structure -->
     <div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="relative glass max-w-2xl w-full rounded-3xl p-8 overflow-hidden max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+        <div class="relative glass max-w-3xl w-full rounded-3xl p-8 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white z-10">
                 <i class="fas fa-times text-xl"></i>
             </button>
             <div id="modal-content"></div>
@@ -217,20 +174,19 @@
                     <div class='space-y-6 text-gray-200'>
                         <div>
                             <h4 class='text-blue-400 font-bold mb-2'>1. AI란 무엇인가?</h4>
-                            <p class='text-sm leading-relaxed'>인공지능(Artificial Intelligence)은 인간의 지각, 추론, 학습 등 지적 능력을 컴퓨터 시스템을 통해 구현하는 기술입니다. 단순히 정해진 규칙을 따르는 것을 넘어, 데이터를 통해 스스로 학습하고 최적의 판단을 내리는 것을 목표로 합니다.</p>
+                            <p class='text-sm leading-relaxed'>인공지능(Artificial Intelligence)은 인간의 지각, 추론, 학습 등 지적 능력을 컴퓨터 시스템을 통해 구현하는 기술입니다.</p>
                         </div>
                         <div>
                             <h4 class='text-purple-400 font-bold mb-2'>2. AI의 발전 역사</h4>
                             <ul class='text-sm space-y-2 list-disc list-inside text-gray-400'>
-                                <li><strong>1950s:</strong> 앨런 튜링의 튜링 테스트 및 '인공지능' 용어 탄생 (다트머스 회의)</li>
-                                <li><strong>1980s:</strong> 전문가 시스템(Expert Systems)의 등장과 신경망 이론의 재조명</li>
-                                <li><strong>2010s:</strong> 딥러닝(Deep Learning)의 혁명과 알파고(AlphaGo)의 등장</li>
-                                <li><strong>현재:</strong> 초거대 언어 모델(LLM)과 범용 인공지능(AGI)을 향한 도약</li>
+                                <li><strong>1950s:</strong> 앨런 튜링의 튜링 테스트 및 '인공지능' 용어 탄생</li>
+                                <li><strong>2010s:</strong> 딥러닝 혁명과 알파고(AlphaGo) 등장</li>
+                                <li><strong>현재:</strong> 초거대 언어 모델(LLM)의 시대</li>
                             </ul>
                         </div>
                         <div>
-                            <h4 class='text-emerald-400 font-bold mb-2'>3. 생성형 AI(Generative AI)란?</h4>
-                            <p class='text-sm leading-relaxed'>기존 데이터를 분류하거나 예측하는 것을 넘어, 텍스트, 이미지, 음악, 코드 등 <strong>새로운 콘텐츠를 직접 만들어내는 AI</strong>를 말합니다. GAN, Transformer 구조 등을 기반으로 하며, ChatGPT와 같은 도구가 대표적입니다.</p>
+                            <h4 class='text-emerald-400 font-bold mb-2'>3. 생성형 AI란?</h4>
+                            <p class='text-sm leading-relaxed'>텍스트, 이미지 등 새로운 콘텐츠를 직접 만들어내는 AI를 말합니다. ChatGPT가 대표적입니다.</p>
                         </div>
                     </div>
                 `,
@@ -264,20 +220,17 @@
             `).join('');
         }
 
+        // 과제 상세 모달
         function openModal(id) {
             const task = assignments.find(t => t.id === id);
             const modal = document.getElementById('modal');
             const content = document.getElementById('modal-content');
             if (!task || !modal || !content) return;
             
-            let actionButton = '';
-            if (task.link) {
-                actionButton = `
-                    <a href="${task.link}" target="_blank" class="flex-1 py-4 bg-blue-600 rounded-xl font-bold text-center hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
-                        <i class="fas fa-external-link-alt"></i> 과제물 보러가기
-                    </a>
-                `;
-            }
+            let actionButton = task.link ? `
+                <a href="${task.link}" target="_blank" class="flex-1 py-4 bg-blue-600 rounded-xl font-bold text-center hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-external-link-alt"></i> 과제물 보러가기
+                </a>` : '';
 
             content.innerHTML = `
                 <div class="mb-6">
@@ -285,15 +238,54 @@
                         <i class="fas ${task.icon} text-4xl text-white"></i>
                     </div>
                     <h2 class="text-3xl font-black mb-4">${task.title}</h2>
-                    <div class="mt-4">
-                        ${task.detail || `<p class="text-lg text-gray-300">${task.description}</p>`}
-                    </div>
+                    <div class="mt-4">${task.detail || `<p class="text-lg text-gray-300">${task.description}</p>`}</div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-3 mt-8">
                     ${actionButton}
                     <button onclick="closeModal()" class="flex-1 py-4 glass rounded-xl font-bold hover:bg-white/10 transition-colors">닫기</button>
                 </div>
             `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 프로필 전용 모달 (choi.jpg 적용)
+        function openProfileModal() {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            if (!modal || !content) return;
+
+            content.innerHTML = `
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="relative group">
+                        <!-- choi.jpg 이미지 적용 -->
+                        <div class="w-64 h-80 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl">
+                            <img src="choi.jpg" alt="최유안" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-slate-900">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-2 block">Student Portfolio</span>
+                        <h3 class="text-4xl font-black mb-4">최유안 <span class="text-xl font-normal text-gray-500 ml-2">Choi Yu-an</span></h3>
+                        <div class="space-y-3 mb-8 text-gray-300 text-lg">
+                            <p><i class="fas fa-university text-blue-400 mr-3"></i>사회복지학과 26학번</p>
+                            <p><i class="fas fa-id-card text-blue-400 mr-3"></i>학번: 202605211</p>
+                            <p class="mt-6 text-gray-400 leading-relaxed italic border-l-2 border-blue-500 pl-4">
+                                "사회복지의 따뜻함과 AI의 기술을 연결합니다."
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-bold">#SocialWelfare</span>
+                            <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-xs font-bold">#AILiteracy</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="w-full py-4 mt-10 glass rounded-xl font-bold hover:bg-white/10 transition-colors">창 닫기</button>
+            `;
+            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
