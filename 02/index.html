@@ -57,7 +57,7 @@
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -92,13 +92,13 @@
             <button onclick="openVideo()" class="nav-btn text-orange-400 border-orange-400/30">
                 <i class="fa-solid fa-play"></i> <span class="hidden sm:inline">동영상</span>
             </button>
-            <!-- 3. 인포그래픽 버튼 (신규 추가) -->
+            <!-- 3. 인포그래픽 버튼 (팝업 기능) -->
             <button onclick="openImage()" class="nav-btn text-blue-400 border-blue-400/30 hover:bg-blue-400/10">
                 <i class="fa-solid fa-image"></i> <span class="hidden sm:inline">인포그래픽</span>
             </button>
-            <!-- 4. 슬라이드 버튼 -->
+            <!-- 4. 슬라이드 버튼 (다운로드 기능) -->
             <a href="AI_slides.pdf" download="AI_slides.pdf" class="nav-btn text-emerald-400 border-emerald-400/30 hover:bg-emerald-400/10">
-                <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">슬라이드</span>
+                <i class="fa-solid fa-file-arrow-down"></i> <span class="hidden sm:inline">슬라이드</span>
             </a>
         </div>
     </nav>
@@ -115,7 +115,7 @@
         </div>
     </div>
 
-    <!-- Image Info Modal (신규 추가) -->
+    <!-- Image Info Modal (인포그래픽 팝업) -->
     <div id="imageModal" class="modal-overlay" onclick="closeImage()">
         <div class="relative max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
             <button onclick="closeImage()" class="absolute -top-12 right-0 text-white text-3xl hover:text-blue-400">
@@ -238,7 +238,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Image Modal Logic (신규)
+        // Image Modal Logic (인포그래픽 팝업창)
         function openImage() {
             document.getElementById('imageModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
